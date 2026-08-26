@@ -1,17 +1,42 @@
 # What is  SQL and database ?
 
-## what is SQL ?
+# what is Database ? 
+- A database is stored an information in form of tables 
+- A database is a collections of informations that stored users informations
+
+# what is DBMS ?
+
+- DBMS stands for database managements systems 
+- DBMS is collection of databases 
+- DBMS is a GUI of databases 
+
+# xampp => mysql
+
+![alt text](image-4.png)
+
+# mysqlworkbench8.0 (mysql community)
+
+![alt text](image-5.png)
+
+# what is RDBMS ? 
+
+- stands for relational database management systems 
+- RDMS is used to normalized database relation
+- RDBMS provides relation b/w one database to another database 
+
+
+# what is SQL ?
 
 - A SQL stands for structured query language
 - A SQL is used to create a database and table structured 
-- A SQL is used to create a structured data 
+- A SQL is used to create a structured database and tables 
 - A SQL is case-insenstive language
 - insenstive language examples : INSERT | insert | Insert 
 
 
-# what is Database ? 
+# what is Database  and list of databases ? 
 
-- A database is used to stored an infomations i.e called database 
+- A database is used to stored an information i.e called database 
 - List out 5 name of database 
 1. oracle
 2. mysql 
@@ -71,7 +96,7 @@
 3. RDBMS manage GUI of database 
 
 
-## types SQL commands 
+## types SQL commands or SQL query ?
 
 - DDL (data definition langauge)
 - DML (data manipulation language)
@@ -83,7 +108,7 @@
 
 - A DDL is used to create database and table definition 
 - A DDL is used to create database name and table name and its structures 
-- A DDL query are ....
+- A DDL query are or commands are  ....
 
 1. create
 2. alter 
@@ -100,13 +125,15 @@
 create database databasename;
 or
 create database db_app; 
+or 
+create database data_analytics_630
 ``` 
 
 ## how to create table  ?
 
 **table datatype and size structures**
 
-# SQL Table Structure
+# SQL Table create chart Structure
 
 | Column Name | Data Type | Size | Description |
 |-------------|-----------|------|-------------|
@@ -127,10 +154,26 @@ create database db_app;
 | defaulttimezone  | timestamp   | default timezone set time and date           |
 
 
+# what is primary key ? 
+
+1. A pk is only defined one times in a tables 
+2. A pk is always stored unique values
+3. A pk never stored null values 
+4. A pk is always auto_increment
+
+# what is unique key ? 
+
+1. A uk is defined more than one  times in a tables 
+2. A uk is always stored unique values
+3. A uk can be  stored one times null values 
+4. A uk never stored dublicate values
+
+
 **syntax**
 
 ```
 create table tablename(
+
 id int auto_increment primary key,
 name varchar(255),
 password varchar(255),
@@ -178,6 +221,25 @@ create_at timestamp
 
 )
 
+or
+
+create table employee(
+
+empid int AUTO_INCREMENT primary key,
+name varchar(100),
+firstname varchar(200),
+lastname varchar(200),
+email varchar(200),
+password varchar(200),
+mobile bigint,
+salary decimal(10,2),
+gender enum('male','female','other'),
+address text,
+status enum('active','inactive')
+
+);
+
+
 ``` 
 
 ## alter
@@ -219,8 +281,8 @@ alter table tbl_employee change photo image varchar(200);
 ```
 drop database databasename
 or
-drop database db_app;
-
+drop database data_analytics_630;
+or
 drop table tablename
 or
 drop table employee
@@ -251,7 +313,8 @@ truncate table employee
 
 ```
 rename table employee to tbl_employee
-
+or
+rename table users to tbl_users
 ```
 
 
@@ -279,8 +342,6 @@ rating enum('*','**','***','****','*****'),
 comment text    
 
 ) 
-
-
 
 ```
 
