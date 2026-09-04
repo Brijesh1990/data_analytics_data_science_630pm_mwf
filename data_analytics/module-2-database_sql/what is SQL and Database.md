@@ -950,6 +950,92 @@ select e.empid,e.name as employee_name,m.name as manager_name from employee e in
 2. commit
 3. rollback
 
+1. save point : 
+
+```
+save point is used to saved interanal trnsaction after delete a query
+examples :
+start transaction;
+delete from tbl_employee where empid=1;
+save point
+```
+
+
+2. commit : 
+
+```
+commit  is used to commit or save deleted data
+examples :
+start transaction;
+delete from tbl_employee where empid=1;
+commit;
+```
+
+3. rollback :
+
+```
+rollback is rollback deleted data or undo the deleted data you can see deleted data after rollback
+examples :
+start transaction;
+delete from tbl_employee where empid=1;
+select * from tbl_employee where empid=1;
+rollback;
+select * from tbl_employee where empid=1;
+
+or
+start transaction;
+delete from tbl_salesman where id=1;
+select * from tbl_salesman where id=1;
+rollback;
+select * from tbl_salesman where id=1;
+```
+
+## what is SQL index or indexer ? 
+
+1. index are created for SQL query speed optimization of data
+2. SQL indexer is used to fast look ups data from tables 
+3. indexer create for  speed optimizations
+
+## how to create indexer or types of indexer ?
+
+   1. single column indexer
+
+     ```
+     create index indexname on tablename columnname1;
+     or
+     create index indexsalesman on tbl_salesman (salary);
+     ```
+   2. composit indexer 
+
+      ```
+       create index indexsalesman1 on tbl_salesman (id,name,salary);
+      ```
+
+
+# what is SQL view  ?
+ 
+1. create a SQL view it meanse it create virtual tables of your main tables
+2. create a SQL view for hide some data from some users the we create a view
+
+**syntax**
+
+```
+create view viename as select columname1, columname2, ...from tablename where id=1;
+or
+create view tbl_salesman_view as select id,name,mobile from tbl_salesman where id in (1,3,4);
+```
+
+# note : after create view we can insert | delete | update any data with sal query  
+
+1. update tbl_salesman_view set mobile=888853656 where name='khushali'
+2. delete from tbl_salesman_view where name='khushali';
+3. insert into tbl_salesman_view(name,mobile) values('prakruti',9122312135),('sanket',78460166)
+
+
+# what is SQL windows function  ?
+
+# what is CTE in SQL ? 
+
 
 
 
