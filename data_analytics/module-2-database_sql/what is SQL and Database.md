@@ -609,6 +609,18 @@ select sum(salary) as total_sum_salary,department from tbl_salesman  where depar
 
 ```
 
+**having**
+
+```
+select  sum(salary) as sum_salary from tbl_salesman where age > 30 group by department having sum_salary > 50000;
+
+or
+
+select  sum(salary) as sum_salary from tbl_salesman  group by department having sum_salary > 50000;
+
+
+```
+
 # alias of column name or nickname of column name
 
 1. alias is nick name of columns 
@@ -682,13 +694,17 @@ select max(salary) as second_highest_salary from tbl_salesman where salary < (se
 or
 
 SELECT MAX(salary) AS second_highest_salary FROM tbl_employee
-WHERE salary < (SELECT MAX(salary) FROM tbl_employee WHERE salary < (SELECT MAX(salary) FROM tbl_employee where  salary < (select max(salary) from tbl_employee)));
+WHERE salary < (SELECT MAX(salary) FROM tbl_employee WHERE salary < (SELECT MAX(salary) FROM tbl_employee where  salary < (select max(salary) from tbl_employee) ));
 
 or 
 
 
 SELECT MAX(salary) AS second_highest_salary FROM tbl_employee
 WHERE salary < (SELECT MAX(salary) FROM tbl_employee WHERE salary < (SELECT MAX(salary) FROM tbl_employee where  salary < (select max(salary) from tbl_employee)));
+
+or
+
+select max(salary) from tbl_salesman where salary < (select max(salary) from tbl_salesman)
 
 ``` 
 
@@ -823,38 +839,38 @@ alter table tbl_users add UNIQUE(`email`,`mobile`);
 
 ```
 create table tbl_categories(
-    catid int AUTO_INCREMENT primary key,
-    catname varchar(255)
+catid int AUTO_INCREMENT primary key,
+catname varchar(255)
 )
 
 or
 
 create table tbl_products   (   
-    pid int AUTO_INCREMENT primary key,
-    pname varchar(255),
-    price int,
-    catid int,
-    constraint catid foreign key(catid) references tbl_categories(catid)
+pid int AUTO_INCREMENT primary key,
+pname varchar(255),
+price int,
+catid int,
+constraint catid foreign key(catid) references tbl_categories(catid)
 )
 
 ```
 
 # what is SQL join ? 
 
-  1. SQL join is used to join two or more than two tables
-  2. SQL join is used to fetch data from two or more than two tables
-  3. SQL join is used to provide relationship b/w tables
-  4. SQL join is used to fetch data from tables using common field and used to join with matched field of tables
-  5. SQL join are used to join data with matched field of tables and return data from tables
+1. SQL join is used to join two or more than two tables
+2. SQL join is used to fetch data from two or more than two tables
+3. SQL join is used to provide relationship b/w tables
+4. SQL join is used to fetch data from tables using common field and used to join with matched field of tables
+5. SQL join are used to join data with matched field of tables and return data from tables
 
 ## types of SQL join
 
 1. inner join
 2. join 
 3. ouster join
-   - left join
-   - right join
-   - full join(not supported in mysql)
+- left join
+- right join
+- full join(not supported in mysql) or union join 
 4. self join
 5. cross join
 
@@ -891,6 +907,9 @@ or
 
 select pid,pname,price,catname from tbl_products  join tbl_categories on tbl_products.catid=tbl_categories.catid;
 
+or
+
+select tbl_products.*,catname from tbl_products join tbl_categories on tbl_products.catid=tbl_categories.catid; 
 ```
 
 **3 - outer join :**
@@ -926,8 +945,15 @@ or
 select pid,pname,price,catname from tbl_products  right join tbl_categories on tbl_products.catid=tbl_categories.catid;
 
 ```
+**union join**
 
-4. self join :
+```
+select tbl_products.pname,tbl_products.price,tbl_categories.catname from tbl_products  left join tbl_categories on tbl_products.catid=tbl_categories.catid
+UNION
+select tbl_products.pname,tbl_products.price,tbl_categories.catname from tbl_products  right join tbl_categories on tbl_products.catid=tbl_categories.catid;
+
+```
+4. **self join**:
 
 self join is used to join a table with itself and return data from same table with matched field of tables
 
@@ -940,6 +966,15 @@ or
 
 select e.empid,e.name as employee_name,m.name as manager_name from employee e inner join employee m on e.manager_id=m.empid;
 
+
+```
+
+**cross join** : 
+
+1. cross join are used to join two tables or more than two tables of cross of rows either data matched or not its return a dublicate repeated data.
+
+```
+select * from tbl_products cross join tbl_categories;
 
 ```
 
@@ -998,22 +1033,22 @@ select * from tbl_salesman where id=1;
 
 ## how to create indexer or types of indexer ?
 
-   1. single column indexer
+1. single column indexer
 
-     ```
-     create index indexname on tablename columnname1;
-     or
-     create index indexsalesman on tbl_salesman (salary);
-     ```
-   2. composit indexer 
+```
+create index indexname on tablename columnname1;
+or
+create index indexsalesman on tbl_salesman (salary);
+```
+2. composit indexer 
 
-      ```
-       create index indexsalesman1 on tbl_salesman (id,name,salary);
-      ```
+```
+create index indexsalesman1 on tbl_salesman (id,name,salary);
+```
 
 
 # what is SQL view  ?
- 
+
 1. create a SQL view it meanse it create virtual tables of your main tables
 2. create a SQL view for hide some data from some users the we create a view
 
@@ -1023,6 +1058,8 @@ select * from tbl_salesman where id=1;
 create view viename as select columname1, columname2, ...from tablename where id=1;
 or
 create view tbl_salesman_view as select id,name,mobile from tbl_salesman where id in (1,3,4);
+
+
 ```
 
 # note : after create view we can insert | delete | update any data with sal query  
@@ -1031,6 +1068,19 @@ create view tbl_salesman_view as select id,name,mobile from tbl_salesman where i
 2. delete from tbl_salesman_view where name='khushali';
 3. insert into tbl_salesman_view(name,mobile) values('prakruti',9122312135),('sanket',78460166)
 
+
+**case one**
+
+1. check multiples case using case when 
+
+```
+select name,salary , case 
+when salary >=25000 then 'Higher earner'
+when salary >=10000 then 'medium earner'
+else 'lower earner'
+end as salary_earner from tbl_salesman
+
+```
 
 # what is SQL windows function  ?
 
