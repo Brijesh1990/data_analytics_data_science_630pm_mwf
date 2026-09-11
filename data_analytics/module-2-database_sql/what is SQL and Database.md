@@ -1026,7 +1026,7 @@ select * from tbl_salesman where id=1;
 ```
 
 ## what is SQL index or indexer ? 
-
+-
 1. index are created for SQL query speed optimization of data
 2. SQL indexer is used to fast look ups data from tables 
 3. indexer create for  speed optimizations
@@ -1081,6 +1081,104 @@ else 'lower earner'
 end as salary_earner from tbl_salesman
 
 ```
+# CSV(comma seperated value) import file in SQL ?
+
+![alt text](image-7.png)
+
+# Excel(.xlsx) or excel workbook with SQL data import file in SQL ?
+
+![alt text](image-8.png)
+
+# generate tables data in graph
+
+![alt text](image-6.png)
+
+# case when ?
+1. check a multiple case using case when
+2. check a multiple case using case when and also check logic based things there used case when 
+
+```
+select name,salary , case when salary >=100000 then "Higher earner" when salary >=25500 then "Mediaum earner" else "lower earner" end as salary_earner_list from tbl_salesman;
+```
+
+# round | now function in SQL ? 
+1. round :
+- round is used to round a soecified number of decimal places 
+```
+select round(123.4567,2);
+or
+select round(25500.4668,2)
+or
+select round(25500.4668)
+```
+
+# now : 
+- now is used to give a current date formate from table acordingly timezone of systems there we used now.
+
+```
+select now();
+or
+select now();
+```
+
+# SQL string function ? 
+
+1. A string function is work on set of character 
+2. A string is stored inside of tables in formate of name | email | password etc
+
+# types of string funtion ?
+
+1. length()
+2. upper()
+3. concate()
+4. lower()
+5. trim()
+6. replace()
+7. right()
+8. left()
+
+**examples**
+
+1. select length('brijesh') from employee where empid=1;
+2. select upper('brijesh') from employee where empid=1;
+or
+3. select upper(name) from employee
+4. select lower(name) from employee
+5. select concat(name,salary) from employee where empid=1;
+6. select concat(name,salary) from employee;
+7. select REPLACE('pizza liked by khushali','khushali','babu bhai');
+8. select trim('                  brijesh          ') from employee where empid=1;
+
+
+# how to stored 10k data and check to apply indexer or index for speed optimization of tables.
+
+```
+INSERT INTO tbl_country (cname)
+SELECT CONCAT(
+    ELT(FLOOR(1 + RAND() * 10),
+        'India',
+        'USA',
+        'Canada',
+        'Australia',
+        'Germany',
+        'France',
+        'Japan',
+        'China',
+        'Brazil',
+        'UK'
+    ),
+    '_',
+    FLOOR(1000 + RAND() * 9000)
+)
+FROM (
+    SELECT 1
+    FROM information_schema.columns a
+    CROSS JOIN information_schema.columns b
+    LIMIT 10000
+) AS x;
+
+```
+
 
 # what is SQL windows function  ?
 
