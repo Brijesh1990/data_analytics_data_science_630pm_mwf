@@ -1179,17 +1179,315 @@ FROM (
 
 ```
 
+# connet mysql with excel when we add any data in mysql database it should be updated in excels also 
+
+1. connect with mysql workbench 
+
+![alt text](image-9.png)
+
+2. transform tables information in excel
+
+![alt text](image-10.png)
+
 
 # what is SQL windows function  ?
 
-# what is CTE in SQL ? 
+1. windows function are used to applied calculations and add unique rows in a tables there we used windows function 
+
+2. windows function are used to add or set a rows related to the current row without grouping the result into a single row.
+
+# types of windows functions 
+
+- row_number()
+- rank()
+- dense_rank()
+- NTILE()
+- LAG()
+- LEAD()
+- first_value()
+- last_value()
+- sum() over()
+- avg() over()
+- count() over()
+- max() over()
+- min() over()
+
+**examples of windows functions**
+
+1. row_number() ...
+   **def** 
+```
+assign a unique number to each rows there we used row_number
+or
+select name, salary , row_number() over(order by salary desc) from tbl_salesman;
+
+```
+
+
+2. rank() ...
+   
+   **def** 
+```
+provides ranking with  gaps for dublicate values 
+or
+select name, salary , rank() over(order by salary desc) as rank_number from tbl_salesman;
+
+```
+
+3. dense_rank() ...
+   
+   **def** 
+```
+provides ranking without   gaps for dublicate values 
+or
+select name, salary , dense_rank() over(order by salary desc) as dense_rank_number from tbl_salesman;
+
+```
+
+4. ntile() ...
+   
+   **def** 
+```
+provides rows into equal group  
+or
+select name, salary , NTILE(2) over(order by salary desc) as group_number from tbl_salesman;
+
+```
+
+4. LAG() ...
+   
+   **def** 
+```
+returns a previous rows value
+or
+
+select name, salary , LAG(salary) over(order by salary desc) as previous_salary from tbl_salesman;
+or
+
+select name, salary , LEAD(salary,1) over(order by salary desc) as next_salary from tbl_salesman;
+
+```
+
+4. LEAD() ...
+   
+   **def** 
+```
+returns a next  rows value  
+or
+
+select name, salary , LAG(salary) over(order by salary desc) as previous_salary from tbl_salesman;
+or
+
+select name, salary , LAG(salary,1) over(order by salary desc) as previous_salary from tbl_salesman;
+
+```
 
 
 
+4.  FIRST_VALUE() ...
+   
+   **def** 
+```
+returns a first values in a windows
+
+or
+
+select name, salary , first_value(salary) over(order by salary desc) as first_max_salary from tbl_salesman;
+
+
+```
+
+
+4.  LAST_VALUE() ...
+   
+   **def** 
+```
+returns a values  in a windows
+
+or
+
+select name, salary , last_value(salary) over(order by salary desc) as last_min_salary from tbl_salesman;
+
+
+```
 
 
 
+4.  sum() over() ...
+   
+   **def** 
+```
+running with total window
+or
+select name, salary , sum(salary) over(order by salary) as sum_of_salary from tbl_salesman;
+
+or
+
+select name, salary , sum(salary) over() as sum_of_salary from tbl_salesman;
+
+```
 
 
+
+4.  avg() over() ...
+   
+   **def** 
+```
+running with total average in  windows
+or
+select name, salary , avg(salary) over(order by salary) as avg_of_salary from tbl_salesman;
+
+```
+
+4. count() over() ...
+   
+   **def** 
+```
+running with total count  in  windows
+or
+select name, salary , count(salid) over() as total_count_salesman from tbl_salesman;
+
+```
+
+
+
+4. max() over() ...
+   
+   **def** 
+```
+retruning  max values in windows 
+or
+select name, salary , max(salary) over() as max_salary_salesman from tbl_salesman;
+or
+select name, salary , max(salary) over(order by salary) as max_salary_salesman from tbl_salesman;
+
+```
+
+
+
+4. max() over() ...
+   
+   **def** 
+```
+retruning  min values in windows 
+or
+
+select name, salary , min(salary) over() as min_salary_salesman from tbl_salesman;
+or
+select name, salary , min(salary) over(order by salary) as min_salary_salesman from tbl_salesman;
+
+```
+
+# what is CTE in SQL or with clause  ? 
+
+1. CTE stands for common table expression (CTE) 
+2. the SQL CTE defines a temporary result set that can be used within a query
+3. It simpliefies complex SQL statements , making them easier to read , manage and reuse there used with cluse or CTE
+
+
+**query of CTE**
+
+```
+with AverageValueCTE as (select avg(salary) from tbl_salesman) select id,name,salary from tbl_salesman where salary >(select * from AverageValueCTE); 
+
+
+```
+
+
+
+**task**
+
+
+**Note:mysql is not support rollback in structures**
+
+
+## Home work
+
+**students based database**
+
+1. create a database named "school"
+2. create a table named "students" with the following columns: id (primary key), name, age, grade, and country_id (foreign key referencing the country table).
+3. insert at least 5 records into the students table.
+4. create a table named "country" with the following columns: country_id (primary key) and country_name.
+5. insert at least 3 records into the country table.
+6. write a query to select all students along with their country names.
+7. write a query to find the average age of students in each grade.
+8. write a query to find the total number of students in each country.
+9. write a query to find the student with the highest grade.
+10. write a query to update the grade of a student with a specific id.
+11. write a query to delete a student with a specific id.
+
+
+**add to cart based database**
+
+1. create a database named "ecommerce_app"
+
+2. create a table named "products" with the following columns: 
+
+product_id (primary key), product_name, price, and stock.
+
+3. insert at least 5 records into the products table.
+
+4. create a table named "customers" with the following columns: 
+
+customer_id (primary key), customer_name, email, and country_id (foreign key referencing the country table).
+
+5. insert at least 3 records into the customers table.   
+
+6. create a table named "orders" with the following columns:
+
+ order_id (primary key), customer_id (foreign key referencing the customers table), product_id (foreign key referencing the products table), quantity, and order_date.
+
+7. insert at least 5 records into the orders table.   
+
+8. write a query to select all orders along with customer names and product names.
+
+9. write a query to find the total revenue generated from all orders.
+
+10. write a query to find the most popular product based on the quantity ordered.
+
+11. write a query to update the stock of a product after an order is placed.
+
+12. write a query to delete an order with a specific order_id.
+
+**all solutions of ecommerce_app database**
+
+
+
+**task based questions**
+
+**faculty based database**
+
+1. create a database named "university"
+
+2. create a table named "faculty" with the following columns: faculty_id (primary key), faculty_name, department, and country_id (foreign key referencing the country table) and 
+provides email as unique key in faculty tables.
+
+3. insert at least 5 records into the faculty table.
+
+4. create a table named "courses" with the following columns: course_id (primary key), course_name, and faculty_id (foreign key referencing the faculty table).
+
+5. insert at least 3 records into the courses table.  
+
+6. create a table named "students" with the following columns: student_id (primary key), student_name, age, and country_id (foreign key referencing the country table).
+
+7. insert at least 5 records into the students table.
+
+8. create a table named "enrollments" with the following columns: enrollment_id (primary key), student_id (foreign key referencing the students table), course_id (foreign key referencing the courses table), and enrollment_date.
+9. insert at least 5 records into the enrollments table.
+
+10. write a query to select all enrollments along with student names and course names.
+
+11. write a query to find the total number of students enrolled in each course.
+
+12. write a query to find the faculty member teaching the most courses.
+
+13. write a query to update the department of a faculty member with a specific faculty_id.
+
+14. write a query to delete a student with a specific student_id.
+
+**Note: after creating database and tables you will insert some data in that tables then you will apply all the queries on that data to understand better**
+
+**solutions of students tables** 
 
 
