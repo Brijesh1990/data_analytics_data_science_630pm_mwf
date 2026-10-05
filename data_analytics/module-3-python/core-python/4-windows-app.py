@@ -1,9 +1,9 @@
 import tkinter as tk
-# create a windows screen 
+# create a windows 
 root=tk.Tk()
-# create a title of windows app 
-root.title('vaidehi notepad app')
-# create a geometry
-root.geometry('550x468')
-# print windows app 
-tk.mainloop()
+# create an title 
+root.title("my first windows app")
+# create a windows geometry(size)
+root.geometry("650x550")
+# run the windows app 
+root.mainloop()
