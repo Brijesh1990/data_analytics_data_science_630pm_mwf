@@ -22,7 +22,7 @@
     # ex:   is , is not 
     
 # 7) conditional expression or ternary operator  
-    # ex: ? :
+    # ex: ? : (python does not support ternary)
     
 # 8) membership operator 
 

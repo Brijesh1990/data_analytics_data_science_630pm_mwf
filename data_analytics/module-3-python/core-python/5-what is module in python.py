@@ -43,5 +43,6 @@ data={
     "name":["rutvi","komal","khushali"],
     "age":[24,21,20]
 } 
+
 df=pd.DataFrame(data);
 print(df)
