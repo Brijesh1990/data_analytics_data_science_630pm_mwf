@@ -58,4 +58,164 @@
 # b=10
 # c="brijesh"
 # print(f"{a} {"\n"} {b} {"\n"} {c}")
- 
+
+
+# str='hi i am kavish'
+# str1='hey i am kavish'
+# str2="""
+# hei i am kavish
+# and i am 21 years old
+
+# and i am percuing B.tech
+
+# """
+# print(str2)
+
+# str2="hei i am kavish and \n i am 21 years old and \n i am percuing B.tech"
+# print(str2)
+
+
+# dictionary :
+# dictionary is a data types of variable in python 
+# dictionary is a mutable (we can change anything else append | insert | change | update ) 
+# dictionary is defined as {key:value} paired
+# dictionary also defined by its constructor dict()
+# dictionary stored any types of data 
+
+# examples 
+
+# employee={"id":1,"name":"kavish","age":21,"salary":2150000}
+# print(employee)
+# print(type(employee))
+# print(employee["name"])
+# print(employee["age"])
+# print(employee["salary"])
+
+
+# dictionary defined as constructor 
+# emp=dict({"id":1,"name":"brijesh"})
+# print(emp)
+# print(type(emp))
+# print(emp["name"])
+
+# constructor defined as same name of class 
+
+# list :
+# list is a data type in python
+# list is mutable can be changed | add | append data
+# list is defined by []
+# list is defined by its constructor list() 
+# list is stored any data types string | bool | numbers etc 
+# list treat in python just like array 
+# examples 
+
+# employee=["brijesh",35,152500,True]
+# print(employee)
+# print(type(employee))
+# print(employee[0])
+
+
+# can we stored  list inside of dictionary stored 
+# import pandas as pd
+# employee={
+#     "name":["jaydeep","kavish","noorie","vaidehi","khushali"],
+#     "age":[24,21,23,22,30],
+#     "salary":[24000,21000,22000,30000,115000]
+# }
+# print(employee)
+# print(employee["name"])
+# print(employee["name"],employee["salary"])
+# print(employee["name"],employee["salary"],employee["age"])
+# print(employee)
+# print(type(employee))
+# df=pd.DataFrame(employee)
+# print(df)
+# give me output in tabular layout 
+# tabular layout meanse structured data 
+# There we used pandas 
+
+# list defined as constructor 
+# emp=list(["brijesh","jaydeep","kavish"])
+# print(emp)
+# print(type(emp))
+# print(emp[0])
+
+# list provides  a mutable data or objects 
+# mutable meanse we can add | change | append | delete data from list 
+
+# numbers=[10,20,30,40,50,60]
+# print(numbers)
+
+# # find first and last elements from list 
+# print("first elements ",numbers[0])
+# print("last elements ",numbers[-1])
+# # reverse a list 
+# print(numbers[::-1])
+# # add new element in list
+# numbers.append(90)
+# print(numbers)
+# print(type(res))
+
+# append data in list
+# numbers=[10,20,30,40,50,60]
+# numbers.append(70)
+# print(numbers)
+
+#insert data li list 
+# add on or insert on any position in list
+# numbers=[10,20,30,40,50,60]
+# numbers.insert(1,90)
+# print(numbers) 
+
+# removed data 
+# numbers=[10,20,30,40,50,60]
+# numbers.pop()
+# print(numbers)  
+
+# numbers=[10,20,30,40,50,60]
+# numbers.remove(20)
+# print(numbers)  
+
+# numbers=[10,20,30,40,50,60]
+# numbers.remove(50)
+# print(numbers)  
+
+# count the repeated numbers
+# numbers=[10,20,30,40,50,60,90,20,30]
+# print(numbers.count(65))
+  
+# update data from list
+# numbers=[10,20,30,40,50,60]
+# numbers[1]=50
+# print(numbers)
+# numbers=[10,20,30,40,50,60]
+# numbers[-1]=1000
+# print(numbers)
+
+# list all method
+numbers=[10,20,30,40,50,60]
+
+numbers.reverse()
+numbers.count()
+numbers.remove()
+numbers.pop()
+numbers.reverse()
+numbers.insert()
+numbers.append()
+numbers.copy()
+numbers.extend()
+numbers.index()
+numbers.sort()
+numbers.clear()
+
+
+
+
+
+
+
+
+
+
+
+
