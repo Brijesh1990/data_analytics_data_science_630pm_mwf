@@ -81,6 +81,8 @@
 # dictionary is defined as {key:value} paired
 # dictionary also defined by its constructor dict()
 # dictionary stored any types of data 
+# dict is mutable (can be changed) data type in python
+# dictionary treat in python just like a list but mutable stored data in key:value paired   
 
 # examples 
 
@@ -208,11 +210,19 @@ numbers.index()
 numbers.sort()
 numbers.clear()
 
+# tuple : 
+# tuple is a data type in python
+# tuple is immutable cannot be changed | add | append data
+# tuple is defined by ()
+# tuple is defined by its constructor tuple() 
+# tuple is stored any data types string | bool | numbers etc 
+# tuple treat in python just like a list but immutable
+# examples 
 
-
-
-
-
+# employee=("brijesh",35,152500,True)
+# print(employee)
+# print(type(employee))
+# print(employee[0])
 
 
 
