@@ -110,11 +110,39 @@
 # else:
 #     print('your credentials are wrong Try again')
 
-print("---press 1 login as admin----")
-print("---press 2 login as developer----")
-print("---press 3 login as faculty----")
-print("---press 4 login as manager----")
-print("---press 0 exit from programmes----")
+# print("---press 1 login as admin----")
+# print("---press 2 login as developer----")
+# print("---press 3 login as faculty----")
+# print("---press 4 login as manager----")
+# print("---press 0 exit from programmes----")
+
+# while True:
+#     choice=int(input("Enter your choice :"))
+#     if choice==1:
+#         email=input("Enter your email :")
+#         pwd=input("Enter your password :")
+#         if email=='admin@gmail.com' and pwd=='admin123':
+#             print('you are Logged in as Admin')
+            
+#     elif choice==2:
+#         email=input("Enter your email :")
+#         pwd=input("Enter your password :")
+#         if email=='dev@gmail.com' and pwd=='dev123':
+#             print('you are Logged in as Developer')
+#     elif choice==0:
+#         print('wrong choice selected')
+#         break
+#     else:
+#         print("your credentials are wrong try again")
+        
+
+
+
+# print("---press 1 login as admin----")
+# print("---press 2 login as developer----")
+# print("---press 3 login as faculty----")
+# print("---press 4 login as manager----")
+# print("---press 0 exit from programmes----")
 
 while True:
     choice=int(input("Enter your choice :"))
@@ -123,16 +151,18 @@ while True:
         pwd=input("Enter your password :")
         if email=='admin@gmail.com' and pwd=='admin123':
             print('you are Logged in as Admin')
-            
+        else:
+            print('email and password are wrong')
+                   
     elif choice==2:
         email=input("Enter your email :")
         pwd=input("Enter your password :")
         if email=='dev@gmail.com' and pwd=='dev123':
             print('you are Logged in as Developer')
+        else:
+            print('email and password are wrong')
     elif choice==0:
         print('wrong choice selected')
         break
-    else:
-        print("your credentials are wrong try again")
         
         
